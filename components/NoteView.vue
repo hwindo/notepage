@@ -1,14 +1,14 @@
 <template>
     <div class="col-12">
-        <div class="note">
+        <div class="note" :class="{ active: editMode }">
             <div class="note__time">{{ time | timeFormat }}</div>
             <div class="note__actions">
-                <a href="#" class="d-block">
-                    <i
-                        class="ri-delete-bin-line"
-                        @click.stop.prevent="deleteNote"
-                    ></i>
-                </a>
+                <button
+                    class="menubar__button btn"
+                    @click.stop.prevent="deleteNote"
+                >
+                    <i class="ri-delete-bin-line"></i>
+                </button>
             </div>
             <template v-if="editMode">
                 <editor-menu-bar
@@ -17,7 +17,7 @@
                 >
                     <div class="menubar">
                         <button
-                            class="menubar__button"
+                            class="menubar__button btn"
                             :class="{ 'is-active': isActive.bold() }"
                             @click="commands.bold"
                         >
@@ -25,7 +25,7 @@
                         </button>
 
                         <button
-                            class="menubar__button"
+                            class="menubar__button btn"
                             :class="{ 'is-active': isActive.italic() }"
                             @click="commands.italic"
                         >
@@ -33,7 +33,7 @@
                         </button>
 
                         <button
-                            class="menubar__button"
+                            class="menubar__button btn"
                             :class="{ 'is-active': isActive.underline() }"
                             @click="commands.underline"
                         >
@@ -41,7 +41,7 @@
                         </button>
 
                         <button
-                            class="menubar__button"
+                            class="menubar__button btn"
                             :class="{ 'is-active': isActive.strike() }"
                             @click="commands.strike"
                         >
@@ -49,7 +49,7 @@
                         </button>
 
                         <button
-                            class="menubar__button"
+                            class="menubar__button btn"
                             :class="{ 'is-active': isActive.paragraph() }"
                             @click="commands.paragraph"
                         >
@@ -57,7 +57,7 @@
                         </button>
 
                         <button
-                            class="menubar__button"
+                            class="menubar__button btn"
                             :class="{
                                 'is-active': isActive.heading({ level: 1 })
                             }"
@@ -67,7 +67,7 @@
                         </button>
 
                         <button
-                            class="menubar__button"
+                            class="menubar__button btn"
                             :class="{ 'is-active': isActive.bullet_list() }"
                             @click="commands.bullet_list"
                         >
@@ -75,18 +75,18 @@
                         </button>
 
                         <button
-                            class="menubar__button"
+                            class="menubar__button btn"
                             :class="{ 'is-active': isActive.ordered_list() }"
                             @click="commands.ordered_list"
                         >
                             <i class="ri-list-ordered"></i>
                         </button>
 
-                        <button class="menubar__button" @click="updateNote">
+                        <button class="menubar__button btn" @click="updateNote">
                             <i class="ri-save-line"></i>
                         </button>
 
-                        <button class="menubar__button" @click="cancelEdit">
+                        <button class="menubar__button btn" @click="cancelEdit">
                             <i class="ri-close-line"></i>
                         </button>
                     </div>
@@ -232,7 +232,7 @@ export default class NoteView extends Vue {
     margin-bottom: 1rem;
     animation-delay: 0.618s;
     animation: slideup 0.382s ease-out forwards;
-    &:hover {
+    &:hover, &.active {
         background-color: var(--color-white);
         border-color: var(--gray);
         #{$note}__actions {
@@ -243,18 +243,29 @@ export default class NoteView extends Vue {
     &__time {
         position: absolute;
     }
+    &__actions,
+    .menubar {
+        top: -2.6rem;
+        background-color: var(--gray);
+        border-radius: 0.5rem 0.5rem 0 0;
+        overflow: hidden;
+        color: white;
+        .btn {
+            color: var(--color-white);
+        }
+    }
     &__actions {
         display: none;
-        top: -1.6rem;
         right: 1rem;
         margin-right: 1rem;
-        background-color: var(--gray);
         color: var(--color-white);
         padding: 0 1rem;
-        border-radius: 0.25rem 0.25rem 0 0;
         a {
             text-decoration: none;
             color: unset;
+        }
+        &.active {
+            display: block;
         }
     }
     &__time {
@@ -273,9 +284,20 @@ export default class NoteView extends Vue {
 }
 
 .menubar {
+    position: absolute;
+    right: 6rem;
+    .btn {
+        border-radius: 0;
+    }
+    .btn.is-active {
+        background-color: var(--dark);
+    }
 }
 
 .proseMirror {
+    &-focused {
+        border-color: unset;
+    }
     &:hover {
         cursor: text;
     }
