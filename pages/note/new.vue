@@ -7,7 +7,6 @@
         </div>
 
         <div class="row">
-            <!-- content -->
             <template v-for="(note, index) in notes">
                 <note-view
                     :id="'note-' + note.id"
@@ -56,12 +55,12 @@ import Note from '@/models/Note'
 export default class New extends Vue {
     inputValue: string = ''
     notes: Array<Note> = [
-        {
-            id: 1,
-            created: '2020-06-13T08:18:14.388Z',
-            text:
-                "<p>Meeting notes are exactly what the name implies––notes. They're quick references to ideas, goals, deadlines, data, and anything else important that's covered in your meeting. Minutes, however, are more formal and often include: A list of everyone who attended the meeting. An absentee list</p>"
-        }
+        // {
+        //     id: 1,
+        //     created: '2020-06-13T08:18:14.388Z',
+        //     text:
+        //         "<p>Meeting notes are exactly what the name implies––notes. They're quick references to ideas, goals, deadlines, data, and anything else important that's covered in your meeting. Minutes, however, are more formal and often include: A list of everyone who attended the meeting. An absentee list</p>"
+        // }
     ]
 
     handleInputSubmit(): void {
