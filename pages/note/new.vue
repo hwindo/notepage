@@ -14,6 +14,7 @@
                     :key="note.id"
                     :index="index"
                     :note="note"
+                    @updateNote="updateNote"
                     @deleteNote="deleteNote"
                 ></note-view>
             </template>
@@ -59,12 +60,11 @@ export default class New extends Vue {
             id: 1,
             created: '2020-06-13T08:18:14.388Z',
             text:
-                "Meeting notes are exactly what the name implies––notes. They're quick references to ideas, goals, deadlines, data, and anything else important that's covered in your meeting. Minutes, however, are more formal and often include: A list of everyone who attended the meeting. An absentee list"
+                "<p>Meeting notes are exactly what the name implies––notes. They're quick references to ideas, goals, deadlines, data, and anything else important that's covered in your meeting. Minutes, however, are more formal and often include: A list of everyone who attended the meeting. An absentee list</p>"
         }
     ]
 
     handleInputSubmit(): void {
-        console.log('clicked', this.inputValue)
         this.addNote()
         this.$nextTick(() => {
             this.inputValue = ''
@@ -79,12 +79,11 @@ export default class New extends Vue {
         const newNote: Note = {
             id: this.notes.length + 1,
             created: new Date().toISOString(),
-            text: this.inputValue
+            text: `<p>${this.inputValue}</p>`
         }
         this.notes.push(newNote)
         this.$nextTick(() => {
             const newNoteId = '#note-' + newNote.id
-            console.log(newNoteId)
             document.querySelector(newNoteId)!.scrollIntoView({
                 behavior: 'smooth'
             })
@@ -94,6 +93,11 @@ export default class New extends Vue {
     deleteNote(index: number) {
         console.log('delete note', index, this.notes[index])
         this.notes.splice(index, 1)
+    }
+
+    updateNote({ index, note }) {
+        console.log('update note', index, note);
+        this.notes[index] = note
     }
 }
 </script>
