@@ -232,7 +232,8 @@ export default class NoteView extends Vue {
     margin-bottom: 1rem;
     animation-delay: 0.618s;
     animation: slideup 0.382s ease-out forwards;
-    &:hover, &.active {
+    &:hover,
+    &.active {
         background-color: var(--color-white);
         border-color: var(--gray);
         #{$note}__actions {
