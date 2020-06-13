@@ -108,5 +108,7 @@ export default class New extends Vue {
     width: 90%;
     width: calc(100% - 2rem);
     margin-bottom: 1rem;
+    opacity: 0;
+    animation: slideup 0.618s ease-out forwards;
 }
 </style>

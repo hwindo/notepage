@@ -1,0 +1,21 @@
+@keyframes slidedown {
+    from {
+        transform: translateY(-61.8%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideup {
+    from {
+        transform: translateY(61.8%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

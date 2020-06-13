@@ -60,6 +60,7 @@ export default {
   css: [
     '~/assets/variables.scss',
     '~/assets/utility.scss',
+    '~/assets/animation.scss',
     '~/assets/global.scss',
   ],
 }

@@ -19,6 +19,7 @@ export default class NoteHeader extends Vue {
 <style lang="scss">
 .header {
     border-bottom: 4px solid lightgray;
+    animation: slidedown 0.618s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
     &__text-link {
         display: block;
         color: unset;

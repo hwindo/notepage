@@ -65,6 +65,8 @@ export default class NoteView extends Vue {
     border-radius: 1rem;
     padding: 1.6rem 1rem 1rem;
     margin-bottom: 1rem;
+    animation-delay: 0.618s;
+    animation: slideup 0.382s ease-out forwards;
     &:hover {
         cursor: pointer;
         background-color: var(--color-white);
