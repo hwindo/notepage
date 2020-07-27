@@ -2,6 +2,8 @@
 
 > A Note Taking Web Application
 
+![NotePage Screenshot](https://github.com/winndo/notepage/blob/master/static/img/NotePage-demo-editing-note.png)
+
 ## Build Setup
 
 ```bash
